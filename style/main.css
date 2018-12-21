@@ -1,0 +1,502 @@
+/*Default*/
+*{
+	padding: 0;
+	margin: 0;
+	cursor:crosshair;
+}
+/*Welcome style - Alexander*/
+header, .clean-screen{
+	text-align: center;
+	margin: auto;
+	color: white;
+}
+/* Hide checkbox-box */
+input{
+	visibility: hidden;
+}
+/* Hides scroll bars */
+::-webkit-scrollbar {
+		display: none;
+}
+
+
+#main{
+	height: 400px;
+	width: 100%;
+	border:5px solid orange;
+	background: linear-gradient(to bottom, #24c6dc, #514a9d);
+	counter-reset: points; /*resetcounter*/
+	user-select: none;
+}
+
+/*click to play - Alexander*/
+#start-game:checked ~ .bird1-horizontal, #start-game:checked ~ .bird2-horizontal, #start-game:checked ~ .bird3-horizontal, #start-game:checked ~ .bird4-horizontal, #start-game:checked ~ .bird5-horizontal,
+#start-game:checked ~ .bird6-horizontal, #start-game:checked ~ .bird7-horizontal, #start-game:checked ~ .bird8-horizontal, #start-game:checked ~ .bird9-horizontal,
+#start-game:checked ~ .clean-screen, #start-game:checked ~ .clean-screen .seconds, #start-game:checked ~ .progressBorder .bar,
+#start-game:checked ~ .left, #start-game:checked ~ .right, #start-game:checked ~ #score{
+	animation-play-state: running;
+}
+
+/*Pause when mouse isnt over game area*/
+#main:not(:hover) .bird1-horizontal, #main:not(:hover) .bird1-vertical,
+#main:not(:hover) .bird2-horizontal, #main:not(:hover) .bird2-vertical,
+#main:not(:hover) .bird3-horizontal, #main:not(:hover) .bird3-vertical,
+#main:not(:hover) .bird4-horizontal, #main:not(:hover) .bird4-vertical,
+#main:not(:hover) .bird5-horizontal, #main:not(:hover) .bird5-vertical,
+#main:not(:hover) .bird6-horizontal, #main:not(:hover) .bird6-vertical,
+#main:not(:hover) .bird7-horizontal, #main:not(:hover) .bird7-vertical,
+#main:not(:hover) .bird8-horizontal, #main:not(:hover) .bird8-vertical,
+#main:not(:hover) .bird9-horizontal, #main:not(:hover) .bird9-vertical,
+#main:not(:hover) .bird::after, #main:not(:hover) .progressBorder .bar, #main:not(:hover) .left, #main:not(:hover) .right, #main:not(:hover) #score{
+	animation-play-state: paused;
+}
+
+/*Hides message to hover over screen to continue*/
+#main:hover .resume{
+	visibility: hidden;
+}
+/*Show title screen items when mouse is over game area*/
+#main:hover .countdown, #main:hover .seconds, #main:hover .clean-screen{
+	visibility: visible;
+}
+
+.bird{ /*Body of the bird */
+	display: inline-block;
+	position: fixed; /*Allows dimentions*/
+	height: 13px;
+	width: 13px;
+	border-top-style: solid; /*Allows bird form*/
+	border-bottom: 1px solid black;
+	border-left: 1px solid black;
+	border-radius: 50px 50px 20px 20px; /*curves of form*/
+	background-color: brown;
+}
+/*bird beak*/
+.bird::before{
+	content: "";
+	position: absolute;
+	left: 9px;
+	top: 2.5px;
+	height: 10px;
+	width: 10px;
+	background-color: yellow;
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	border-radius: 0px 100% 0px 0px;
+}
+/*bird wings*/
+.bird::after{
+	content: ""; /*Display border*/
+	position: absolute; /*Allows dimentions*/
+	left: -14px;
+	top: -3px;
+	height: 20px;
+	width: 40px;
+	border-radius: 1000%; /*Deg of curve */
+	border-top-style: solid;
+	transform-origin: 100% 0%; /*Only flip on x-axis*/
+	animation: wings 1s infinite linear; /*Flapping wings animation*/
+}
+/*Face of bird*/
+.face{
+	position: absolute;
+	font-size: 30px;
+	top: -22px;
+	left: 5px;
+}
+.face::after{
+	content: "";
+	position: absolute;
+	width: 10px;
+	height: 2px;
+	border-bottom: 1px solid black;
+	border-radius: 0px 100%;
+	top: 30px;
+	left: 4px;
+}
+.flyzone{
+	position: absolute;
+	top: 10px; /*Sets the highest point of the animation*/
+}
+label{
+	transition: all 1s ease;
+}
+/*Location of checkbox, makes radio buttons ontop of bird (Helps with click detection)*/
+[id*="bird"]{
+	position: absolute;
+	top: -5px;
+	right: -25px;
+	height: 30px !important;
+	width: 30px !important;
+}
+/*When any bird gets click, increase points by 1*/
+[id*="bird"]:checked{
+	counter-increment: points;
+}
+[id*="bird"]:checked + label{
+	transform: rotate(-180deg);
+	opacity: 0;
+}
+/*Unique bird variables*/
+.bird1-vertical{
+	animation: vertical-top 2.5s infinite; /* vertical bird movement */
+	height: 400px;
+}
+.bird1-horizontal{
+	animation: horizontal 10s infinite 5s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/* Bird 2 */
+.bird2-vertical{
+	animation: vertical-top 4s infinite 11s; /* vertical bird movement */
+	height: 400px;
+}
+.bird2-horizontal{
+	animation: horizontal 13s infinite 11s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/* Bird 3 */
+.bird3-vertical{
+	animation: vertical-top 3s infinite 12s; /* vertical bird movement */
+	height: 400px;
+}
+.bird3-horizontal{
+	animation: horizontal 7s infinite 12s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/*Wave 2*/
+/* Bird 4 */
+.bird4-vertical{
+	animation: vertical-mid 6s infinite 8s; /* vertical bird movement */
+	height: 400px;
+}
+.bird4-horizontal{
+	animation: horizontal 7.5s infinite 8s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/* Bird 5 */
+.bird5-vertical{
+	animation: vertical-mid 6.6s infinite 7s; /* vertical bird movement */
+	height: 400px;
+}
+.bird5-horizontal{
+	animation: horizontal 9.6s infinite 7s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/* Bird 6  -> fast one*/
+.bird6-vertical{
+	animation: vertical-mid 3.5s infinite; /* vertical bird movement */
+	height: 400px;
+}
+.bird6-horizontal{
+	animation: horizontal 5s infinite 5s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/*Wave 3*/
+/* Bird 7 */
+.bird7-vertical{
+	animation: vertical-bottom 8s infinite 10s; /* vertical bird movement */
+	height: 400px;
+}
+.bird7-horizontal{
+	animation: horizontal 6s infinite 10s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/* Bird 8 */
+.bird8-vertical{
+	animation: vertical-bottom 9s infinite 8s; /* vertical bird movement */
+	animation-delay: 2;
+	height: 400px;
+}
+.bird8-horizontal{
+	animation: horizontal 7.7s infinite 8s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+
+/* Bird 9 */
+.bird9-vertical{
+	animation: vertical-bottom 7s infinite 7s; /* vertical bird movement */
+	height: 400px;
+}
+.bird9-horizontal{
+	animation: horizontal 13s infinite 7s linear; /* horizontal bird movement */
+	animation-play-state: paused;
+	width: 110%;
+}
+/*End Unique bird variables*/
+/*End of Alexander bird*/
+
+/*Countdown - Alexander*/
+.countdown{
+	display: inline-block;
+	position: relative;
+	width: 1em;
+	height: 1em;
+	overflow: hidden;
+	visibility: hidden;
+}
+.seconds{
+	position: absolute;
+	width: 1em;
+	line-height: 1em;
+	animation: countdown 6s 1;
+	animation-fill-mode: forwards;
+	animation-play-state: paused;
+	visibility: hidden;
+	margin-top: 2px;
+}
+/*End count down*/
+.clean-screen{
+	visibility: hidden;
+	position: relative;
+	animation: clean-screen 2s;
+	animation-play-state: paused;
+	animation-fill-mode: forwards;
+	animation-delay: 5s;
+	z-index: 3;
+/*Background around click to play*/
+	background: black;
+	border: 1px solid white;
+	padding: 5px;
+	width: 250px;
+}
+
+/*Display score*/
+#displaycounter{
+	font-weight: bolder;
+	font-size: 16pt;
+	letter-spacing: .7px;
+	height: 20px;
+	width: 40px;
+	position: relative;
+	top: -175px;
+	margin-left: 100px;
+	padding: 5px;
+	border-bottom:1px solid  white;
+	color: white;
+}
+
+#displaycounter::after{
+	content: counter(points);
+}
+/*High score appear at middle */
+#score{
+	display: block;
+	position: relative;
+	margin: auto;
+	width: 400px;
+	text-align: center;
+	opacity: 0;
+	animation: middle 2s linear 37s forwards;
+	animation-play-state: paused;
+	z-index: 3;
+	font-size: 50pt;
+	/* Style around the score box */
+	border: 1px solid white;
+	padding: 0 5px;
+	color: white;
+	background: black;
+}
+#score::after{
+	content: counter(points);
+}
+
+/* Apo*/
+.progressBorder{
+	position: absolute;
+	margin-left: 100px;
+	margin-top: 200px;
+	width: 250px;
+	height: 10px;
+	border: 2.2px solid black;
+}
+.bar{
+	background: linear-gradient(to right, red, #ef3d47);
+	animation: prog 30s 5s ease-out;
+	animation-play-state: paused;
+	animation-fill-mode: backwards;
+	height: 10px;
+}
+.curtain{
+	position: absolute;
+	top: 0;
+	width: 50%;
+	height: 800px;
+	float: left;
+	z-index: 2;
+}
+.left{
+	left: 0;
+	animation: slideL 2s, closeL 2s 35s;
+	animation-play-state: paused;
+	animation-fill-mode: forwards;
+}
+.right{
+	right: 0;
+	animation: slideR 2s, closeR 2s 35s;
+	animation-fill-mode: forwards;
+	animation-play-state: paused;
+}
+
+.col{
+	width: 5%;
+	height: 65%;
+	float: left;
+	border-bottom-right-radius: 70px;
+	border-bottom-left-radius: 70px;
+}
+.col:nth-child(1n+3){
+	background-color: #ffa500;
+}
+.col:nth-child(2n+1){
+	background-color: #EA8912;
+}
+.col:nth-child(2), .col:nth-child(8){
+	background-color: orange;
+}
+ .col:nth-child(4n+6){
+	background-color: #FFCC33;
+}
+/* Blue curtains
+.col:nth-child(1n+3){
+	background-color: #4DD4FF;
+}
+.col:nth-child(2n+1){
+	background-color: #0191C8;
+}
+.col:nth-child(2), .col:nth-child(8){
+	background-color: aqua;
+}
+ .col:nth-child(4n+6){
+	background-color: #778899;
+} */
+
+@keyframes wings {
+	0%{
+		transform: rotateX(0deg);
+	}
+	100%{
+		transform: rotateX(360deg);
+	}
+}
+
+@keyframes horizontal{
+	0%{
+		transform: translateX(0px);
+		transform: scale(1.2);
+	}
+	100%{
+		transform: translateX(110%);
+	}
+}
+
+@keyframes vertical-top{
+	0%, 100%{
+		transform: translateY(5%);
+	}
+	50%{
+		transform: translateY(50%);
+	}
+}
+@keyframes vertical-mid{
+	0%, 100%{
+		transform: translateY(25%);
+	}
+	50%{
+		transform: translateY(75%);
+	}
+}
+@keyframes vertical-bottom{
+	0%, 100%{
+		transform: translateY(80%);
+	}
+	50%{
+		transform: translateY(5%);
+	}
+}
+/*countdown for game start - Alexander*/
+@keyframes countdown{
+	0%{
+		top: 0em;
+	}
+	20%{
+		top: -1em;
+	}
+	40%{
+		top: -2em;
+	}
+	50%{
+		top: -3em;
+	}
+	80%{
+		top: -4em;
+	}
+	100%{
+		top: -5em;
+	}
+}
+/*Fly off the screen - Alexander*/
+@keyframes clean-screen {
+	0% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(1200%);
+	}
+}
+@keyframes middle {
+	from{opacity: 0;}
+	to{opacity: 1;}
+}
+@keyframes slideL{
+	0%{
+		transform: translateX(0%);
+	}
+	100%{
+		transform: translateX(-95%);
+	}
+}
+@keyframes slideR{
+	0%{
+		transform: translate(0%, 0%);
+	}
+	100%{
+		transform: translate(95%, 0%);
+	}
+}
+@keyframes closeL{
+	0%{
+		transform: translate(-95%, 0%);
+	}
+
+	100%{
+		transform: translate(0%, 0%);
+	}
+}
+@keyframes closeR{
+	0%{
+		transform: translate(95%, 0%);
+	}
+	100%{
+		transform: translate(0%, 0%);
+	}
+}
+@keyframes prog {
+  from {width: 0px}
+  to {width: 245px}
+}

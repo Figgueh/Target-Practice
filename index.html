@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Target Practice</title>
+	<link rel="stylesheet" type="text/css" href="./style/main.css" media="screen">
+</head>
+<body>
+	<div id="main">
+		<header>
+		<h1>Welcome to Target Practice</h1>
+			<br/>
+			<br/>
+			<span class="resume">
+				Hover over the screen to resume the game
+			</span>
+		</header>
+		<!--Play state-->
+		<input type="checkbox" id="start-game">
+		<div class="clean-screen">
+			<h2><label for="start-game" class="start-game">Click here to start!</label></h2>
+			Game starts in:<div class="countdown"><div class="seconds">5 4 3 2 1 0</div></div>seconds
+		</div>
+		<div class="left curtain">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+		<div class="right curtain">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+		</div>
+			<div class="progressBorder">
+				<div class="bar">
+				</div>
+			</div>
+			<!--
+			flyzone = Absolute position for everything in the play area
+			bird'x'-horizontal = The horizontal movement pattern for the bird
+			bird'x'-position = The initial position of the bird
+			-->
+			<span class="flyzone bird1-horizontal">
+				<!--
+				bird'x'-vertical = The horizontal movement pattern for the bird
+				-->
+				<span class="flyzone bird1-vertical">
+					<input type="radio" id="bird1">
+					<!-- Hitbox for bird -->
+					<label for="bird1" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 2 -->
+			<span class="flyzone bird2-horizontal">
+				<span class="flyzone bird2-vertical">
+					<input type="radio" id="bird2">
+					<label for="bird2" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 3 -->
+			<span class="flyzone bird3-horizontal">
+				<span class="flyzone bird3-vertical">
+					<input type="radio" id="bird3">
+					<label for="bird3" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 4 -->
+			<span class="flyzone bird4-horizontal">
+				<span class="flyzone bird4-vertical">
+					<input type="radio" id="bird4">
+					<label for="bird4" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 5 -->
+			<span class="flyzone bird5-horizontal">
+				<span class="flyzone bird5-vertical">
+					<input type="radio" id="bird5">
+					<label for="bird5" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 6 -->
+			<span class="flyzone bird6-horizontal">
+				<span class="flyzone bird6-vertical">
+					<input type="radio" id="bird6">
+					<label for="bird6" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 7 -->
+			<span class="flyzone bird7-horizontal">
+				<span class="flyzone bird7-vertical">
+					<input type="radio" id="bird7">
+					<label for="bird7" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 8 -->
+			<span class="flyzone bird8-horizontal">
+				<span class="flyzone bird8-vertical">
+					<input type="radio" id="bird8">
+					<label for="bird8" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<!-- Bird 9 -->
+			<span class="flyzone bird9-horizontal">
+				<span class="flyzone bird9-vertical">
+					<input type="radio" id="bird9">
+					<label for="bird9" class="bird"><span class="face">.</span></label>
+				</span>
+			</span>
+
+			<div id="score">Final score:&nbsp;</div>
+		<span id="displaycounter">Points:&nbsp;</span>
+	</div>
+</body>
+</html>
